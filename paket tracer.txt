@@ -1,0 +1,67 @@
+enable
+
+Rooter#show running-config (Portlarý görmek için)
+
+Rooter#configre terminal (config etmek için ilk adým)
+(config):interface fastEthernet 0/0
+(config-if):ip address .....(.. yere ip ve submask yazýlýr.)
+(config-if):no shutdown (ile de port açýlýr)
+(config-if):exit
+(config):exit
+Rooter#
+
+Rooter#configre terminal (config etmek için ilk adým)
+(config):interface fastEthernet 0/3/0
+(config-if):ip address .....(.. yere ip ve submask yazýlýr.)
+(config-if):no shutdown (ile de port açýlýr)
+(config-if):exit
+(config):exit
+Rooter#
+
+Rooter#configre terminal
+(config): router rip
+(config-router):network ....(Router ve ortak wan aðýnýn network adresi yazýlýr)
+(config-router):exit
+(config):exit
+Rooter#
+
+
+Rooter#configre terminal
+(config): router ospf 10
+(config-router):network ....(ORN:network 192.169.10.0 0.0.0.255 area 0)(network adresi, willd mask, area)
+(config-router):exit
+(config):exit
+Rooter#
+(Willd mask nasýl bulunur? --> ip:192.168.10.0/24 ise 24 olduðu için 0.0.0.255 oluyor.)
+
+
+
+
+-------------------------
+
+Switch#configre terminal	(Vlan oluþturmak için bu kodlarý kullanýyoruz.)
+SW(config):vlan (0-1001) 	(Vlan oluþturmak için bu kodlarý kullanýyoruz.)
+SW(config-vlan):name pazarlama	(Vlan oluþturmak için bu kodlarý kullanýyoruz.)
+SW(config-vlan):exit		(Vlan oluþturmak için bu kodlarý kullanýyoruz.)
+SW(config):exit			(Vlan oluþturmak için bu kodlarý kullanýyoruz.)
+Switch#
+
+
+Switch#configre terminal	
+SW(config):interface fast ethernet 0/1	(Oluþturduðumuz Vlanlara portlarý atamak için kullanýyoruz.)
+SW(config-if):switch mode vlan 10
+SW(config-if):exit	
+Switch#
+
+
+Switch#configre terminal	
+SW(config):interface fast ethernet 0/5	(Switchler arasý mod atamak için kullanýyoruz.)
+SW(config-if):switch mode truck
+SW(config-if):exit	
+Switch#
+
+
+
+
+
+
